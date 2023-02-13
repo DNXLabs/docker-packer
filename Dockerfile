@@ -1,13 +1,18 @@
 FROM amazon/aws-cli
 
+ARG BUILDPLATFORM
+ARG TARGETPLATFORM
+ARG PLATFORM="linux_64bit"
+
 RUN yum -y install openssh-server openssh-clients yum-utils gcc make zlib1g-dev wget curl tar python3 && \
     rm -rf /usr/bin/python && \
-    ln -s /usr/bin/python2 /usr/bin/python && \
-    curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm" -o "session-manager-plugin.rpm" && \
-    yum install -y session-manager-plugin.rpm && \
-    rm -rf session-manager-plugin.rpm
+    ln -s /usr/bin/python2 /usr/bin/python
 
-RUN yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+RUN if [[ "$TARGETPLATFORM" == "linux/arm64" ]]; then PLATFORM="linux_arm64"; fi; \
+    curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/$PLATFORM/session-manager-plugin.rpm" -o "session-manager-plugin.rpm" && \
+    yum install -y session-manager-plugin.rpm && \
+    rm -rf session-manager-plugin.rpm && \
+    yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
 
 RUN yum -y install packer && \
     rm -rf /usr/sbin/packer && \
