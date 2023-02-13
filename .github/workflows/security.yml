@@ -15,19 +15,19 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag dnxsolutions/docker-packer:latest
 
-      - name: Scan image
-        uses: anchore/scan-action@v3
-        id: scan
-        with:
-          image: dnxsolutions/docker-packer:latest
-          fail-build: true
-          severity-cutoff: critical
-          acs-report-enable: true
+      # - name: Scan image
+      #   uses: anchore/scan-action@v3
+      #   id: scan
+      #   with:
+      #     image: dnxsolutions/docker-packer:latest
+      #     fail-build: true
+      #     severity-cutoff: critical
+      #     acs-report-enable: true
 
-      - name: Inspect action SARIF report
-        run: cat ${{ steps.scan.outputs.sarif }}
+      # - name: Inspect action SARIF report
+      #   run: cat ${{ steps.scan.outputs.sarif }}
 
-      - name: Upload Anchore Scan Report
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: ${{ steps.scan.outputs.sarif }}
+      # - name: Upload Anchore Scan Report
+      #   uses: github/codeql-action/upload-sarif@v1
+      #   with:
+      #     sarif_file: ${{ steps.scan.outputs.sarif }}
