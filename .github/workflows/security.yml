@@ -13,13 +13,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag dnxsolutions/docker-packer:latest
+        run: docker build . --file Dockerfile --tag dnxsolutions/packer:latest
 
       # - name: Scan image
       #   uses: anchore/scan-action@v3
       #   id: scan
       #   with:
-      #     image: dnxsolutions/docker-packer:latest
+      #     image: dnxsolutions/packer:latest
       #     fail-build: true
       #     severity-cutoff: critical
       #     acs-report-enable: true

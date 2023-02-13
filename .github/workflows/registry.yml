@@ -18,9 +18,8 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            dnxsolutions/docker-packer
-            ghcr.io/dnxlabs/docker-packer
-            public.ecr.aws/dnxsolutions/docker-packer
+            dnxsolutions/packer
+            public.ecr.aws/dnxsolutions/packer
           tags: |
             type=raw,value=latest
             type=ref,event=tag
@@ -57,7 +56,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          platforms: linux/amd64, linux/arm64, linux/ppc64le, linux/s390x, linux/arm/v6, linux/arm/v7, linux/386
+          platforms: linux/amd64, linux/arm64, linux/386
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
