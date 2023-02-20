@@ -19,9 +19,10 @@ RUN if [[ "$TARGETPLATFORM" == "linux/arm64" ]]; then PLATFORM="linux_arm64"; fi
     yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo && \
     yum clean all
 
-RUN yum -y install packer && \
-    rm -rf /usr/sbin/packer && \
-    ln -s /usr/bin/packer /usr/sbin/packer
+RUN wget https://releases.hashicorp.com/packer/1.8.5/packer_1.8.5_linux_amd64.zip && \
+    unzip packer_1.8.5_linux_amd64.zip && \
+    mv packer \usr\bin\packer && \
+    rm -rf packer_1.8.5_linux_amd64.zip
 
 RUN wget https://bootstrap.pypa.io/pip/get-pip.py && \
     rm -rf /usr/bin/python && \
