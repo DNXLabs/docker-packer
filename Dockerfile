@@ -29,7 +29,7 @@ RUN wget https://bootstrap.pypa.io/pip/get-pip.py && \
 
 RUN wget "https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip" && \
     unzip "packer_${PACKER_VERSION}_linux_amd64.zip" && \
-    mv packer \usr\bin\packer && \
+    mv packer /usr/bin/packer && \
     rm -rf "packer_${PACKER_VERSION}_linux_amd64.zip"
 
 ENTRYPOINT [ "packer" ]
