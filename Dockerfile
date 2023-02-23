@@ -25,7 +25,7 @@ RUN wget https://bootstrap.pypa.io/pip/get-pip.py && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     python get-pip.py  && \
     rm get-pip.py && \
-    pip3 install --no-cache-dir ansible    
+    pip3 install --no-cache-dir ansible paramiko
 
 RUN wget "https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip" && \
     unzip "packer_${PACKER_VERSION}_linux_amd64.zip" && \
