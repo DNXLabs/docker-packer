@@ -9,7 +9,7 @@ VOLUME ["/work"]
 
 WORKDIR /work
 
-RUN yum -y install openssh-server openssh-clients yum-utils gcc make zlib1g-dev wget curl tar python3 unzip && \
+RUN yum -y install openssh-server openssh-clients yum-utils gcc make zlib1g-dev wget curl tar python3 unzip genisoimage && \
     rm -rf /usr/bin/python && \
     ln -s /usr/bin/python2 /usr/bin/python
 
@@ -25,7 +25,7 @@ RUN wget https://bootstrap.pypa.io/pip/get-pip.py && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     python get-pip.py  && \
     rm get-pip.py && \
-    pip3 install --no-cache-dir ansible paramiko
+    pip3 install --no-cache-dir ansible paramiko hvac
 
 RUN wget "https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip" && \
     unzip "packer_${PACKER_VERSION}_linux_amd64.zip" && \
