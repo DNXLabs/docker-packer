@@ -9,7 +9,7 @@ VOLUME ["/work"]
 
 WORKDIR /work
 
-RUN yum -y install openssh-server openssh-clients yum-utils gcc make zlib1g-dev wget curl tar python3 unzip && \
+RUN yum -y install openssh-server openssh-clients yum-utils gcc make zlib1g-dev wget curl tar python3 unzip genisoimage && \
     rm -rf /usr/bin/python && \
     ln -s /usr/bin/python2 /usr/bin/python
 
