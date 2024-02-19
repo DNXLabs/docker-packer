@@ -19,7 +19,7 @@ RUN yum -y install \
         curl=8.3.0-1 \
         tar=1.26-35 \
         python3=3.7.16-1 \
-        unzip6.0-57 \
+        unzip=6.0-57 \
         genisoimage=1.1.11-23 \
         zlib1g-dev && \
     yum clean all && \
