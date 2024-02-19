@@ -9,7 +9,8 @@ VOLUME ["/work"]
 
 WORKDIR /work
 
-RUN yum -y install openssh-server-7.4p1-22.amzn2.0.6.x86_64 \
+RUN yum -y install \
+        openssh-server-7.4p1-22.amzn2.0.6.x86_64 \
         openssh-clients-7.4p1-22.amzn2.0.6.x86_64 \
         yum-utils-1.1.31-46.amzn2.0.1 \
         gcc-7.3.1-17.amzn2 \
