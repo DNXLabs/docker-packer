@@ -1,4 +1,4 @@
-FROM amazon/aws-cli:2.10.0
+FROM amazon/aws-cli:2.15.21
 
 ARG BUILDPLATFORM
 ARG TARGETPLATFORM
@@ -9,7 +9,19 @@ VOLUME ["/work"]
 
 WORKDIR /work
 
-RUN yum -y install openssh-server openssh-clients yum-utils gcc make zlib1g-dev wget curl tar python3 unzip genisoimage && \
+RUN yum -y install \
+        openssh-server-7.4p1-22.amzn2.0.6.x86_64 \
+        openssh-clients-7.4p1-22.amzn2.0.6.x86_64 \
+        yum-utils-1.1.31-46.amzn2.0.1 \
+        gcc-7.3.1-17.amzn2 \
+        make-1:3.82-24.amzn2 \
+        wget-1.14-18.amzn2.1 \
+        curl-8.3.0-1.amzn2.0.5.x86_64 \
+        tar-2:1.26-35.amzn2.0.3 \
+        python3-3.7.16-1.amzn2.0.4\
+        unzip-6.0-57.amzn2.0.1 \
+        genisoimage-1.1.11-23.amzn2.0.2 \
+        zlib1g-dev && \
     yum clean all && \
     rm -rf /usr/bin/python && \
     ln -s /usr/bin/python2 /usr/bin/python
