@@ -21,7 +21,7 @@ RUN yum -y install \
         python3=3.7.16-1 \
         unzip6.0-57 \
         genisoimage=1.1.11-23 && \
-    zlib1g-dev 
+        zlib1g-dev \
     yum clean all && \
     rm -rf /usr/bin/python && \
     ln -s /usr/bin/python2 /usr/bin/python
