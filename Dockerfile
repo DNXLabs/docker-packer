@@ -9,7 +9,19 @@ VOLUME ["/work"]
 
 WORKDIR /work
 
-RUN yum -y install openssh-server openssh-clients yum-utils gcc make zlib1g-dev wget curl tar python3 unzip genisoimage && \
+RUN yum -y install \
+        openssh-server=7.4p1-22 \
+        openssh-clients=7.4p1-22 \
+        yum-utils=1.1.31-46 \
+        gcc=7.3.1-17 \
+        make=3.82-24 \
+        wget=1.14-18 \
+        curl=8.3.0-1 \
+        tar=1.26-35 \
+        python3=3.7.16-1 \
+        unzip6.0-57 \
+        genisoimage=1.1.11-23 && \
+    zlib1g-dev 
     yum clean all && \
     rm -rf /usr/bin/python && \
     ln -s /usr/bin/python2 /usr/bin/python
